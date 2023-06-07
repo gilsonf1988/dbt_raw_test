@@ -19,7 +19,7 @@ WITH transformed_address AS (
     PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S', JSON_EXTRACT_SCALAR(_airbyte_data, '$.updated_date')) AS updated_date,
     JSON_EXTRACT_SCALAR(_airbyte_data, '$.person_id_person') AS person_id_person
   FROM
-    {{ source('intbr_db_prd_dbt', '_airbyte_raw_address') }}
+    {{ source('_airbyte_raw_address') }}
 )
 
 -- Substitua a tabela original pelo resultado transformado
